@@ -15,10 +15,8 @@ var Controller = function () {
         },
 
         bindEvents: function () {
-            document.getElementById("cog").addEventListener("click", function () {
-                self.renderSettingsView();
-            });
             $('.tab').on('click', this.onTabClick);
+            $('#cog').on('click', this.onTabClick);
         },
 
 
@@ -40,6 +38,9 @@ var Controller = function () {
             }
             if (tab === 'stat'){
                 self.renderStatView();
+            }
+            if (tab === 'cog') {
+                self.renderSettingsView();
             }   
         },
 
@@ -49,6 +50,7 @@ var Controller = function () {
             $("#sanduhr .tabPng").removeClass('active');
             $("#group .tabPng").removeClass('active');
             $("#stat .tabPng").removeClass('active');
+            $("#cog #cogPng").addClass('active');
 
             var $tab = $('#pageContent div');
             $tab.empty();
@@ -63,6 +65,7 @@ var Controller = function () {
         },
 
         renderLoginView: function () {
+            $("#cog #cogPng").removeClass('active');
             var $tab = $('#pageContent div');
             $tab.empty();
             $("#pageContent").load("./views/login.html", function (data) {
@@ -91,6 +94,7 @@ var Controller = function () {
             $("#sanduhr .tabPng").removeClass('active');
             $("#group .tabPng").removeClass('active');
             $("#stat .tabPng").removeClass('active');
+            $("#cog #cogPng").removeClass('active');
 
             var $tab = $('#pageContent div');
             $tab.empty();
@@ -103,6 +107,7 @@ var Controller = function () {
             $("#folder .tabPng").removeClass('active');
             $("#group .tabPng").removeClass('active');
             $("#stat .tabPng").removeClass('active');
+            $("#cog #cogPng").removeClass('active');
 
             var $tab = $('#pageContent div');
             $tab.empty();
@@ -115,6 +120,7 @@ var Controller = function () {
             $("#sanduhr .tabPng").removeClass('active');
             $("#folder .tabPng").removeClass('active');
             $("#stat .tabPng").removeClass('active');
+            $("#cog #cogPng").removeClass('active');
 
             var $tab = $('#pageContent div');
             $tab.empty();
@@ -127,6 +133,7 @@ var Controller = function () {
             $("#sanduhr .tabPng").removeClass('active');
             $("#group .tabPng").removeClass('active');
             $("#folder .tabPng").removeClass('active');
+            $("#cog #cogPng").removeClass('active');
 
             var $tab = $('#pageContent div');
             $tab.empty();
