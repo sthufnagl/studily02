@@ -1,0 +1,31 @@
+# remove extension less files
+*
+!/**/
+!*.*
+
+# intermediate files
+node_modules/
+build/
+obj/
+Debug/
+bin/
+package-lock.json
+.vs
+.gradle
+.idea
+*.exe
+
+# Cordova - platforms
+platforms
+
+# Cordova - plugins - remove all except json & xml
+plugins/*
+!plugins/**/*.json
+!plugins/**/*.xml
+
+# res
+**/resources/signing
+
+# project specific
+**/dist/
+**/all.min.js
