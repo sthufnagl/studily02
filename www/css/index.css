@@ -68,15 +68,6 @@ h1 {
     to { opacity: 1.0; }
 }
 
-#header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 10%;
-    width: 100%;
-    background-color: aquamarine;
-}
-
 #pageContent{
     position: fixed;
     top: 10%;
@@ -84,10 +75,3 @@ h1 {
     width: 100%;
 }
 
-#footer{
-    position: fixed;
-    top:90%;
-    height: 10%;
-    width: 100%;
-    background-color: aquamarine;
-}

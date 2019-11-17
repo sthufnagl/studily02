@@ -1,0 +1,29 @@
+#footer{
+    position: fixed;
+    top:90%;
+    height: 10%;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+.tab{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+.tabPng{
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+}
+
+.line{
+    position: absolute;
+    right: 0;
+    width: 1px;
+    top: 10%;
+    height: 80%;
+    background-color: black;
+}

@@ -5,13 +5,19 @@ var Controller = function () {
         initialize: function () {
             self = this;
             this.bindEvents();
-            self.renderSettingsView();
+            //self.renderSettingsView();
+            var btnw = $("#cog").height();
+            $('#cog').css({'width':btnw+'px'});
+            var tabImg = $(".tabPng").height();
+            $('.tabPng').css({'width':tabImg+'px'});
+            var midOfTab = $(".tab").width() / 2;
+            $('.tabPng').css({'left': midOfTab - (tabImg / 2) +'px'});
         },
 
         bindEvents: function () {
-            //document.getElementById("cog").addEventListener("click", function () {
-             //   self.renderSettingsView();
-           // });
+            document.getElementById("cog").addEventListener("click", function () {
+                self.renderSettingsView();
+            });
         },
 
 
@@ -34,7 +40,7 @@ var Controller = function () {
         },
 
         renderLoginView: function () {
-            var $tab = $('#pageContent');
+            var $tab = $('#pageContent div');
             $tab.empty();
             $("#pageContent").load("./views/login.html", function (data) {
                 document.getElementById("closeModal").addEventListener("click", closeForm);
