@@ -27,3 +27,8 @@
     height: 80%;
     background-color: black;
 }
+
+.active {
+    filter: invert(100%); 
+    -webkit-filter: invert(100%); 
+}
