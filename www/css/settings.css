@@ -10,17 +10,6 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
 button:hover {
   opacity: 0.8;
 }
@@ -120,8 +109,25 @@ span.psw {
   }
 }
 
-#loginBut{
-    width: auto;
+.settBut{
+    margin-right: 1vh;
+    margin-top: 1vh;
+    font-size: 3vh;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-width: 2px;
+    border-color: mediumseagreen;
+    border-radius: 6px;
+    background-color: mediumseagreen;
+    color: white;
+    float: right;
+    cursor: pointer;
+}
+
+#signUpBut{
+  border-color: black;
 }
 
 #foot{
