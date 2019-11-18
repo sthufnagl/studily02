@@ -55,9 +55,10 @@ var Controller = function () {
             var $tab = $('#pageContent div');
             $tab.empty();
             $("#pageContent").load("./views/settings.html", function (data) {
-
-                // document.getElementById("pageContent").style.display = "none";
-                // document.getElementById("pageContent").style.display = "block";
+                    var username = localStorage.getItem("User");
+                    var psw =  localStorage.getItem("Password");
+                    document.getElementById("inputUsername").innerHTML = username;
+                    document.getElementById("inputPasswort").innerHTML = psw;
                 document.getElementById("loginBut").addEventListener("click", function () {
                     self.renderLoginView();
                 });
@@ -86,8 +87,10 @@ var Controller = function () {
                     self.renderSettingsView();
                 }
                 function loginFnct(){
-                    localStorage.setItem("User", "xxxxx");
-                    localStorage.setItem("Password", "xxxxx");
+                    var username = document.getElementById("uname").value;
+                    localStorage.setItem("User", username);
+                    var psw = document.getElementById("psw").value;
+                    localStorage.setItem("Password", psw);
                     self.renderSettingsView();
                 }
             });
