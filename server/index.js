@@ -14,4 +14,6 @@ app.get('/', (req, res) => {
     res.json({ message: 'Hello world' })
 })
 // Starting server
-app.listen('1337')
+app.listen('1337', function () {
+    console.log('Example app listening on port 1337!');
+  });
