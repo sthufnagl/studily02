@@ -1,11 +1,7 @@
 <div id="id01" class="modal">
 
-    <form class="modal-content animate" action="" method="post">
-        <div class="imgcontainer">
-            <span id="closeModal" class="close" title="Close Modal">&times;</span>
-            <img src="../img/logo.png" alt="Avatar" class="avatar">
-        </div>
-
+    <div class="modal-content animate">
+        <span id="closeModal" class="close" title="Close Modal">&times;</span>
         <div class="container">
             <label for="uname"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="uname" required>
@@ -13,7 +9,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit">Login</button>
+            <button id="loginBtn">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -23,5 +19,5 @@
             <button type="button" id="closeCancel" class="cancelbtn closeForm">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-    </form>
+    </div>
 </div>

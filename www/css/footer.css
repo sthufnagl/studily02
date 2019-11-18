@@ -4,6 +4,7 @@
     height: 10%;
     width: 100%;
     background-color: mediumseagreen;
+    z-index: 0;
 }
 
 .tab{

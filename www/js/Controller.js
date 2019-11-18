@@ -71,6 +71,7 @@ var Controller = function () {
             $("#pageContent").load("./views/login.html", function (data) {
                 document.getElementById("closeModal").addEventListener("click", closeForm);
                 document.getElementById("closeCancel").addEventListener("click", closeForm);
+                document.getElementById("loginBtn").addEventListener("click", loginFnct);
 
                 var modal = document.getElementById('id01');
                 // When the user clicks anywhere outside of the modal, close it
@@ -82,6 +83,9 @@ var Controller = function () {
                 }
 
                 function closeForm(){
+                    self.renderSettingsView();
+                }
+                function loginFnct(){
                     localStorage.setItem("User", "xxxxx");
                     localStorage.setItem("Password", "xxxxx");
                     self.renderSettingsView();
