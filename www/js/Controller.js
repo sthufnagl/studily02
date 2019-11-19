@@ -86,12 +86,14 @@ var Controller = function () {
                 function closeForm(){
                     self.renderSettingsView();
                 }
+
                 function loginFnct(){
                     var username = document.getElementById("uname").value;
                     localStorage.setItem("User", username);
                     var psw = document.getElementById("psw").value;
                     localStorage.setItem("Password", psw);
                     self.renderSettingsView();
+                    self.saveLoginData();
                 }
             });
         },
@@ -146,6 +148,35 @@ var Controller = function () {
             $tab.empty();
             $("#pageContent").load("./views/stat.html", function (data) {});
         },
+
+        saveLoginData: function(){
+            var username = localStorage.getItem("User");
+            var psw      = localStorage.getItem("Password");
+            var userData = {
+                "id": 1,
+                "title": username,
+                "content": psw,
+                "tags": [
+                    "tag1",
+                    "tag2",
+                    "tag3"
+                ],
+                "createdAt": "Mon Aug 27 2018 15:16:17 GMT+0200 (CEST)",
+                "updatedAt": "Mon Aug 27 2018 15:16:17 GMT+0200 (CEST)"
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1337/api/v1",
+                // The key needs to match your method's input parameter (case-sensitive).
+                data: JSON.stringify(userData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){alert(data);},
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+            });
+        }
 
     }
     controller.initialize();
