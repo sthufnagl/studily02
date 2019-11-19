@@ -1,4 +1,8 @@
 var set = null;
+
+//POST URL
+const NODEJSURL = "http://192.168.0.29:1337/api/v1";
+
 var Controller = function () {
     var controller = {
         self: null,
@@ -153,7 +157,7 @@ var Controller = function () {
             var username = localStorage.getItem("User");
             var psw      = localStorage.getItem("Password");
             var userData = {
-                "id": 1,
+                "id": 11,
                 "title": username,
                 "content": psw,
                 "tags": [
@@ -166,12 +170,12 @@ var Controller = function () {
             };
             $.ajax({
                 type: "POST",
-                url: "http://localhost:1337/api/v1",
+                url: NODEJSURL,
                 // The key needs to match your method's input parameter (case-sensitive).
                 data: JSON.stringify(userData),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function(data){alert(data);},
+                success: function(data){alert("User: " + data.content.title + " is created at: " + data.content.createdAt);},
                 failure: function(errMsg) {
                     alert(errMsg);
                 }
