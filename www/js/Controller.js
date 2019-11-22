@@ -11,11 +11,11 @@ var Controller = function () {
             this.bindEvents();
             self.renderFolderView();
             var btnw = $("#cog").height();
-            $('#cog').css({'width':btnw+'px'});
+            $('#cog').css({ 'width': btnw + 'px' });
             var tabImg = $(".tabPng").height();
-            $('.tabPng').css({'width':tabImg+'px'});
+            $('.tabPng').css({ 'width': tabImg + 'px' });
             var midOfTab = $(".tab").width() / 2;
-            $('.tabPng').css({'left': midOfTab - (tabImg / 2) +'px'});
+            $('.tabPng').css({ 'left': midOfTab - (tabImg / 2) + 'px' });
         },
 
         bindEvents: function () {
@@ -29,23 +29,23 @@ var Controller = function () {
             if ($(this).hasClass('active')) {
                 return;
             }
-            
+
             var tab = $(this).context.id;
             if (tab === 'folder') {
                 self.renderFolderView();
             }
-            if (tab === 'sanduhr'){
+            if (tab === 'sanduhr') {
                 self.renderSanduhrView();
             }
-            if (tab === 'group'){
+            if (tab === 'group') {
                 self.renderGroupView();
             }
-            if (tab === 'stat'){
+            if (tab === 'stat') {
                 self.renderStatView();
             }
             if (tab === 'cog') {
                 self.renderSettingsView();
-            }   
+            }
         },
 
         renderSettingsView: function () {
@@ -59,10 +59,10 @@ var Controller = function () {
             var $tab = $('#pageContent div');
             $tab.empty();
             $("#pageContent").load("./views/settings.html", function (data) {
-                    var username = localStorage.getItem("User");
-                    var psw =  localStorage.getItem("Password");
-                    document.getElementById("inputUsername").innerHTML = username;
-                    document.getElementById("inputPasswort").innerHTML = psw;
+                var username = localStorage.getItem("User");
+                var psw = localStorage.getItem("Password");
+                document.getElementById("inputUsername").innerHTML = username;
+                document.getElementById("inputPasswort").innerHTML = psw;
                 document.getElementById("loginBut").addEventListener("click", function () {
                     self.renderLoginView();
                 });
@@ -83,15 +83,15 @@ var Controller = function () {
                 window.onclick = function (event) {
                     if (event.target == modal) {
                         self.renderSettingsView();
-                        
+
                     }
                 }
 
-                function closeForm(){
+                function closeForm() {
                     self.renderSettingsView();
                 }
 
-                function loginFnct(){
+                function loginFnct() {
                     var username = document.getElementById("uname").value;
                     localStorage.setItem("User", username);
                     var psw = document.getElementById("psw").value;
@@ -101,7 +101,7 @@ var Controller = function () {
                 }
             });
         },
-        renderFolderView: function(){
+        renderFolderView: function () {
 
             $("#folder .tabPng").addClass('active');
             $("#sanduhr .tabPng").removeClass('active');
@@ -111,10 +111,10 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/folder.html", function (data) {});
+            $("#pageContent").load("./views/folder.html", function (data) { });
         },
 
-        renderSanduhrView: function(){
+        renderSanduhrView: function () {
 
             $("#sanduhr .tabPng").addClass('active');
             $("#folder .tabPng").removeClass('active');
@@ -124,10 +124,16 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/sanduhr.html", function (data) {});
+            $("#pageContent").load("./views/sanduhr.html", function (data) {
+                document.getElementById("timerBtn").addEventListener("click", function () {
+                    var Mins = 60 * document.getElementById("timerMins").value;
+                    document.getElementById("timerMins").value = '';
+                    self.startTimer(Mins);
+                });
+            });
         },
 
-        renderGroupView: function(){
+        renderGroupView: function () {
 
             $("#group .tabPng").addClass('active');
             $("#sanduhr .tabPng").removeClass('active');
@@ -137,10 +143,10 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/group.html", function (data) {});
+            $("#pageContent").load("./views/group.html", function (data) { });
         },
 
-        renderStatView: function(){
+        renderStatView: function () {
 
             $("#stat .tabPng").addClass('active');
             $("#sanduhr .tabPng").removeClass('active');
@@ -150,12 +156,33 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/stat.html", function (data) {});
+            $("#pageContent").load("./views/stat.html", function (data) { });
         },
 
-        saveLoginData: function(){
+        startTimer: function (duration) {
+            var timer = duration, minutes, seconds;
+            var interval = setInterval(function () {
+                if (--timer < 0) {
+                    clearInterval(interval);
+                } else {
+                    minutes = parseInt(timer / 60, 10)
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    document.getElementById("time").textContent = minutes + ":" + seconds;
+                }
+                document.getElementById("timerBtn").addEventListener("click", function () {
+                    clearInterval(interval);
+                });
+            }, 1000);
+
+        },
+
+        saveLoginData: function () {
             var username = localStorage.getItem("User");
-            var psw      = localStorage.getItem("Password");
+            var psw = localStorage.getItem("Password");
             var userData = {
                 "id": 11,
                 "title": username,
@@ -175,8 +202,8 @@ var Controller = function () {
                 data: JSON.stringify(userData),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function(data){alert("User: " + data.content.title + " is created at: " + data.content.createdAt);},
-                failure: function(errMsg) {
+                success: function (data) { alert("User: " + data.content.title + " is created at: " + data.content.createdAt); },
+                failure: function (errMsg) {
                     alert(errMsg);
                 }
             });
