@@ -12,12 +12,16 @@ var Controller = function () {
             self.renderFolderView();
             var btnw = $("#cog").height();
             $('#cog').css({ 'width': btnw + 'px' });
-            var tabImg = $(".tabPng").height();
-            $('.tabPng').css({ 'width': tabImg + 'px' });
-            var midOfTab = $(".tab").width() / 2;
-            $('.tabPng').css({ 'left': midOfTab - (tabImg / 2) + 'px' });
         },
 
+        addTopic: function(topicName) {
+            var divTopic = document.createElement('div');
+            divTopic.id = "filler";
+            divTopic.className = "block";
+            divTopic.innerHTML = '<div class="name">' + topicName + '</div><div class="removeTopic">x</div>';
+            document.getElementById("topics").appendChild(divTopic);
+        },
+        
         bindEvents: function () {
             $('.tab').on('click', this.onTabClick);
             $('#cog').on('click', this.onTabClick);
@@ -111,7 +115,13 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/folder.html", function (data) { });
+            $("#pageContent").load("./views/folder.html", function (data) { 
+                document.getElementById("addBtn").addEventListener("click", function () {
+                    var topic = document.getElementById("topic").value;
+                    document.getElementById("topic").value = '';
+                    self.addTopic(topic);
+                });
+            });
         },
 
         renderSanduhrView: function () {
