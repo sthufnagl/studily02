@@ -30,6 +30,7 @@
     color: white;
     cursor: pointer;
     border-color: black;
+    border-style: solid;
 }
 
 #time{

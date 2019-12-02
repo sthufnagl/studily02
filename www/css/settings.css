@@ -120,9 +120,10 @@ span.psw {
     padding-left: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-    border-width: 2px;
-    border-color: mediumseagreen;
+    border-width: 1px;
+    border-color: black;
     border-radius: 6px;
+    border-style: solid;
     background-color: mediumseagreen;
     color: white;
     float: right;
@@ -131,6 +132,7 @@ span.psw {
 
 #signUpBut{
   border-color: black;
+  border-style: solid;
 }
 
 #foot{
@@ -143,6 +145,8 @@ span.psw {
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  border-style: solid;
+  border-color: grey;
 }
 
 /*

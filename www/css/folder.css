@@ -17,9 +17,10 @@
     padding-left: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-    border-width: 2px;
-    border-color: mediumseagreen;
+    border-width: 1px;
+    border-color: black;
     border-radius: 6px;
+    border-style: solid;
     background-color: mediumseagreen;
     color: white;
     cursor: pointer;
