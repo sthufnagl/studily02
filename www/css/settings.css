@@ -19,6 +19,9 @@ button:hover {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
 }
 
 /* Center the image and position the close button */
@@ -131,7 +134,15 @@ span.psw {
 }
 
 #foot{
-    background-color:#f1f1f1;
+  background-color:#f1f1f1;
+}
+
+#loginBtn{
+  padding: 10px 18px;
+  background-color: mediumseagreen;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 /*
