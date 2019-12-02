@@ -15,6 +15,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "de.studily.app02"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "de.studily.app02"
     }
   },
   "dependent_plugins": {}

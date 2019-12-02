@@ -10,18 +10,16 @@ var Controller = function () {
             self = this;
             this.bindEvents();
             self.renderFolderView();
-            var btnw = $("#cog").height();
-            $('#cog').css({ 'width': btnw + 'px' });
         },
 
-        addTopic: function(topicName) {
+        addTopic: function (topicName) {
             var divTopic = document.createElement('div');
             divTopic.id = "filler";
             divTopic.className = "block";
             divTopic.innerHTML = '<div class="name">' + topicName + '</div><div class="removeTopic">x</div>';
             document.getElementById("topics").appendChild(divTopic);
         },
-        
+
         bindEvents: function () {
             $('.tab').on('click', this.onTabClick);
             $('#cog').on('click', this.onTabClick);
@@ -115,11 +113,13 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/folder.html", function (data) { 
+            $("#pageContent").load("./views/folder.html", function (data) {
                 document.getElementById("addBtn").addEventListener("click", function () {
                     var topic = document.getElementById("topic").value;
-                    document.getElementById("topic").value = '';
-                    self.addTopic(topic);
+                    if (topic != "") {
+                        document.getElementById("topic").value = '';
+                        self.addTopic(topic);
+                    }
                 });
             });
         },

@@ -1,18 +1,18 @@
-#topic{
+#topic {
     position: relative;
-    width: 83%;
+    width: 78%;
     height: 5vh;
     float: left;
     margin-right: 2%;
     margin-top: 0;
-    margin-bottom: 4vh;
 }
 
 #addBtn{
     position: relative;
     height: 5vh;
+    width: 20%;
     float: left;
-    font-size: 3vh;
+    font-size: 180%;
     padding-right: 8px;
     padding-left: 8px;
     padding-top: 4px;
