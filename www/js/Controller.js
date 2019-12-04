@@ -186,6 +186,14 @@ var Controller = function () {
                 document.getElementById("timerBtn").addEventListener("click", function () {
                     clearInterval(interval);
                 });
+                if(cordova.plugins.backgroundMode.isActive() == true){
+                    clearInterval(interval);
+                    if (confirm("Press a button!")) {
+                        txt = "You pressed OK!";
+                      } else {
+                        txt = "You pressed Cancel!";
+                      }
+                }
             }, 1000);
 
         },

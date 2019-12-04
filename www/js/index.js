@@ -12,6 +12,7 @@ var app = {
     },
 
     onDeviceReady: function() {
+        cordova.plugins.backgroundMode.enable();
         controller = new Controller();
         
     },
