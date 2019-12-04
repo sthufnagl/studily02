@@ -23,10 +23,11 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-background-mode": {
+  "cordova-plugin-keyboard": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-background-mode@^0.7.3"
+      "id": "cordova-plugin-keyboard"
+
     },
     "is_top_level": true,
     "variables": {}

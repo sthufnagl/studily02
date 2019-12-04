@@ -149,6 +149,13 @@ span.psw {
   border-color: grey;
 }
 
+#loginBtn{
+  padding: 10px 18px;
+  background-color: mediumseagreen;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
 /*
 <div class="imgcontainer">
             

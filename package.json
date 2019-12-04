@@ -16,8 +16,8 @@
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.1.1",
-    "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-sqlite": "^1.0.3",
     "cordova-sqlite-storage": "^3.4.0",
     "mongodb": "^3.3.4",
@@ -31,12 +31,12 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-sqlite": {},
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-keyboard": {}
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

@@ -1,5 +1,6 @@
-var set = null;
 
+var set = null;
+var interval;
 //POST URL
 const NODEJSURL = "http://192.168.0.29:1337/api/v1";
 
@@ -7,26 +8,39 @@ var Controller = function () {
     var controller = {
         self: null,
         initialize: function () {
+            if (localStorage.getItem("topicCounter") == null) {
+                localStorage.setItem("topicCounter", 1);
+            }
             self = this;
             this.bindEvents();
             self.renderFolderView();
-            var btnw = $("#cog").height();
-            $('#cog').css({ 'width': btnw + 'px' });
+
         },
 
-        addTopic: function(topicName) {
-            var divTopic = document.createElement('div');
-            divTopic.id = "filler";
-            divTopic.className = "block";
-            divTopic.innerHTML = '<div class="name">' + topicName + '</div><div class="removeTopic">x</div>';
-            document.getElementById("topics").appendChild(divTopic);
+        addTopic: function (topicName) {
+            var count = localStorage.getItem("topicCounter");
+            var newCount = count + 1;
+            localStorage.setItem("topicCounter", newCount);
+            var target = "topic" + count;
+            var divTopic = '<div id="' + target + '" class="block"><div class="name" id="' + target + 'Name">' + topicName + '</div><div class="removeTopic">x</div></div>';
+            document.getElementById("topics").innerHTML = document.getElementById("topics").innerHTML + divTopic;
+
+            $(".block").on("click", removeTopics);
+            localStorage.setItem("topics", document.getElementById("topics").innerHTML);
+
+            function removeTopics() {
+                var search = '<div id="' + this.id + '" class="block"><div class="name" id="' + this.id + 'Name">' + document.getElementById(this.id + "Name").innerHTML + '</div><div class="removeTopic">x</div></div>';
+                var rep = localStorage.getItem("topics").replace(search, "");
+                localStorage.setItem("topics", rep);
+                document.getElementById("topics").innerHTML = localStorage.getItem("topics");
+                $(".block").on("click", removeTopics);
+            }
         },
 
         bindEvents: function () {
             $('.tab').on('click', this.onTabClick);
             $('#cog').on('click', this.onTabClick);
         },
-
 
         onTabClick: function (e) {
             e.preventDefault();
@@ -105,6 +119,7 @@ var Controller = function () {
                 }
             });
         },
+
         renderFolderView: function () {
 
             $("#folder .tabPng").addClass('active');
@@ -115,15 +130,29 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
-            $("#pageContent").load("./views/folder.html", function (data) { 
+
+            $("#pageContent").load("./views/folder.html", function (data) {
+                document.getElementById("topics").innerHTML = localStorage.getItem("topics");
+                $(".block").on("click", removeTopics);
+
+                function removeTopics() {
+                    var search = '<div id="' + this.id + '" class="block"><div class="name" id="' + this.id + 'Name">' + document.getElementById(this.id + "Name").innerHTML + '</div><div class="removeTopic">x</div></div>';
+                    var rep = localStorage.getItem("topics").replace(search, "");
+                    localStorage.setItem("topics", rep);
+                    document.getElementById("topics").innerHTML = localStorage.getItem("topics");
+                    $(".block").on("click", removeTopics);
+                }
                 document.getElementById("addBtn").addEventListener("click", function () {
+
+
                     var topic = document.getElementById("topic").value;
-                    document.getElementById("topic").value = '';
-                    self.addTopic(topic);
+                    if (topic != "") {
+                        document.getElementById("topic").value = '';
+                        self.addTopic(topic);
+                    }
                 });
             });
         },
-
         renderSanduhrView: function () {
 
             $("#sanduhr .tabPng").addClass('active');
@@ -135,6 +164,13 @@ var Controller = function () {
             var $tab = $('#pageContent div');
             $tab.empty();
             $("#pageContent").load("./views/sanduhr.html", function (data) {
+                document.addEventListener("resume", function () {
+                    if (document.getElementById("time").textContent != "") {
+                        clearInterval(interval);
+                        document.getElementById("time").textContent = "";
+                        alert("Der Timer stoppt wenn du die App verlässt!");
+                    }
+                });
                 document.getElementById("timerBtn").addEventListener("click", function () {
                     var Mins = 60 * document.getElementById("timerMins").value;
                     document.getElementById("timerMins").value = '';
@@ -171,9 +207,10 @@ var Controller = function () {
 
         startTimer: function (duration) {
             var timer = duration, minutes, seconds;
-            var interval = setInterval(function () {
+            interval = setInterval(function () {
                 if (--timer < 0) {
                     clearInterval(interval);
+                    document.getElementById("time").textContent = "";
                 } else {
                     minutes = parseInt(timer / 60, 10)
                     seconds = parseInt(timer % 60, 10);
@@ -185,15 +222,9 @@ var Controller = function () {
                 }
                 document.getElementById("timerBtn").addEventListener("click", function () {
                     clearInterval(interval);
+                    document.getElementById("time").textContent = "";
                 });
-                if(cordova.plugins.backgroundMode.isActive() == true){
-                    clearInterval(interval);
-                    if (confirm("Press a button!")) {
-                        txt = "You pressed OK!";
-                      } else {
-                        txt = "You pressed Cancel!";
-                      }
-                }
+
             }, 1000);
 
         },
