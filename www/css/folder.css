@@ -51,6 +51,7 @@
     height: 6vh;
     clear: both;
     margin-bottom: 1vh;
+    text-transform: none;
 }
 
 .name{

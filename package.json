@@ -15,6 +15,7 @@
   "dependencies": {
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
+    "cordova-ios": "^5.1.1",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-sqlite": "^1.0.3",
@@ -34,7 +35,8 @@
     },
     "platforms": [
       "browser",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

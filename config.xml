@@ -20,7 +20,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <icon src="www/img/logoAndy.png" />
+        <icon src="www/img/andyLogo.png" />
         <splash density="mdpi" src="www/img/logoAndy.png" />
         <splash density="hdpi" src="www/img/logoAndy.png" />
         <splash density="xhdpi" src="www/img/logoAndy.png" />
