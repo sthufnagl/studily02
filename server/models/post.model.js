@@ -32,7 +32,9 @@ function insertPost(newPost) {
         } 
         newPost = { ...id, ...date, ...newPost }
         posts.push(newPost)
+        console.log(__dirname);
         helper.writeJSONFile(filename, posts)
+        
         resolve(newPost)
     })
 }

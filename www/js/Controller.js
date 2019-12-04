@@ -14,6 +14,7 @@ var Controller = function () {
             self = this;
             this.bindEvents();
             self.renderFolderView();
+
         },
 
         addTopic: function (topicName) {
@@ -129,6 +130,7 @@ var Controller = function () {
 
             var $tab = $('#pageContent div');
             $tab.empty();
+
             $("#pageContent").load("./views/folder.html", function (data) {
                 document.getElementById("topics").innerHTML = localStorage.getItem("topics");
                 $(".block").on("click", removeTopics);
@@ -141,6 +143,7 @@ var Controller = function () {
                     $(".block").on("click", removeTopics);
                 }
                 document.getElementById("addBtn").addEventListener("click", function () {
+
 
                     var topic = document.getElementById("topic").value;
                     if (topic != "") {

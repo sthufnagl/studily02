@@ -13,6 +13,7 @@ var app = {
     },
 
     onDeviceReady: function () {
+
         controller = new Controller();
 
     },

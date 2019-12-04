@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "de.studily.app02"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "de.studily.app02"
     },
